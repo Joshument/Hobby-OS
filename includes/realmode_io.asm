@@ -37,14 +37,12 @@ string_loop:
     call put_char
     add si, 1
 
-    pusha ; preserve registers
     mov ah, 0x03 ; get cursor positon
     mov bh, 0x0
     int 0x10 ; interrupt for visual commands
 
     add dl, 0x1
     call move_cursor
-    popa
 
     jmp string_loop
 string_exit:
